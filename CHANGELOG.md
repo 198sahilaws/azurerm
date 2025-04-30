@@ -1,3 +1,8 @@
+## TBD (UNRELEASED)
+
+BUG FIXES:
+* fix: new VMSS Function App version [v1.0.2](modules/terraform-zscc-function-app-azure/zscaler_cc_function_app.zip) updating requests Python library from version 2.29.0 to 2.32.2
+
 ## v0.7.0 (March 10, 2025)
 
 FEATURES:
