@@ -1,4 +1,8 @@
-## v0.7.0 (March 10, 2025)
+## UNRELEASED (TBD)
+ENHANCEMENTS:
+* add: variable asp_sku_name for VMSS Deployments in regions that do not support Flex Consumption App Service Plan
+
+## v0.7.0 (March 14, 2025)
 
 FEATURES:
 * New Azure Region supported by Cloud Connector: Spain Central
