@@ -210,3 +210,30 @@ variable "existing_nat_gw_subnet_association" {
   description = "Set this to true only if both byo_nat_gws and byo_subnets variables are true. this implies that there are already NAT Gateway resources associated to subnets where Cloud Connectors are being deployed to"
   default     = false
 }
+
+
+# Custom names
+
+variable "nat_gw_name" {
+ description = "This is a variable of type list"
+ type        = list(string)
+}
+
+
+variable "nat_gw_pip_name" {
+ description = "This is a variable of type list"
+ type        = list(string)
+}
+
+
+variable "cc_vnet_name" {
+ description = "This is a variable of type string"
+ type        = string
+ default     = ""
+}
+
+
+variable "cc_subnet_name" {
+ description = "This is a variable of type list"
+ type        = list(string)
+}

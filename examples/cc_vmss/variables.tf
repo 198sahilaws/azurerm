@@ -500,3 +500,108 @@ variable "byo_service_nsg_names" {
   description = "Existing Service Network Security Group ID for Cloud Connector VM association. This must be populated if byo_nsg variable is true"
   default     = null
 }
+
+
+# Custom Names
+
+variable "cc_vmss_name" {
+ description = "This is a variable of type list"
+ type        = list(string)
+}
+
+
+variable "cc_vm_mgmt_nic_name" {
+ description = "This is a variable of type list"
+ type        = list(string)
+}
+
+
+variable "cc_vm_srvc_nic_name" {
+ description = "This is a variable of type list"
+ type        = list(string)
+}
+
+
+variable "cc_mgmt_nic_nsg_name" {
+ description = "This is a variable of type list"
+ type        = list(string)
+}
+
+
+variable "cc_srvc_nic_nsg_name" {
+ description = "This is a variable of type list"
+ type        = list(string)
+}
+
+
+variable "nat_gw_name" {
+ description = "This is a variable of type list"
+ type        = list(string)
+}
+
+
+variable "nat_gw_pip_name" {
+ description = "This is a variable of type list"
+ type        = list(string)
+}
+
+
+variable "cc_vnet_name" {
+ description = "This is a variable of type string"
+ type        = string
+ default     = ""
+}
+
+
+variable "cc_subnet_name" {
+ description = "This is a variable of type list"
+ type        = list(string)
+}
+
+
+variable "lb_custom_name" {
+ description = "This is a variable of type string"
+ type        = string
+ default     = ""
+}
+
+
+variable "lb_frontend_ip_name" {
+ description = "This is a variable of type string"
+ type        = string
+ default     = ""
+}
+
+
+variable "lb_backend_pool_name" {
+ description = "This is a variable of type string"
+ type        = string
+ default     = ""
+}
+
+
+variable "lb_probe_name" {
+ description = "This is a variable of type string"
+ type        = string
+ default     = ""
+}
+
+
+variable "lb_rule_name" {
+ description = "This is a variable of type string"
+ type        = string
+ default     = ""
+}
+
+
+variable "function_app_name" {
+ description = "This is a variable of type string"
+ type        = string
+ default     = ""
+}
+
+variable "storage_acc_name" {
+ description = "This is a variable of type string"
+ type        = string
+ default     = ""
+}

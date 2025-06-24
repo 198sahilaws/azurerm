@@ -74,6 +74,12 @@ module "network" {
   byo_nat_gw_rg                      = var.byo_nat_gw_rg
   existing_nat_gw_pip_association    = var.existing_nat_gw_pip_association
   existing_nat_gw_subnet_association = var.existing_nat_gw_subnet_association
+
+  # Custom Names
+  nat_gw_name           = var.nat_gw_name
+  nat_gw_pip_name       = var.nat_gw_pip_name
+  cc_vnet_name          = var.cc_vnet_name
+  cc_subnet_name        = var.cc_subnet_name
 }
 
 ################################################################################
@@ -143,6 +149,11 @@ module "cc_vmss" {
   scheduled_scaling_start_time_min  = var.scheduled_scaling_start_time_min
   scheduled_scaling_end_time_hour   = var.scheduled_scaling_end_time_hour
   scheduled_scaling_end_time_min    = var.scheduled_scaling_end_time_min
+
+  #Custom Names
+  cc_vmss_name                     = var.cc_vmss_name
+  cc_vm_mgmt_nic_name                 = var.cc_vm_mgmt_nic_name
+  cc_vm_srvc_nic_name                 = var.cc_vm_srvc_nic_name
 }
 
 ################################################################################
@@ -173,6 +184,10 @@ module "cc_functionapp" {
   existing_log_analytics_workspace_id = var.existing_log_analytics_workspace_id
   run_manual_sync                     = var.run_manual_sync
   path_to_scripts                     = coalesce(var.path_to_scripts, "../../scripts")
+
+  # Custom Names
+  function_app_name = var.function_app_name
+  storage_acc_name  = var.storage_acc_name
 }
 
 ################################################################################
@@ -196,6 +211,10 @@ module "cc_nsg" {
   byo_mgmt_nsg_names    = var.byo_mgmt_nsg_names
   byo_service_nsg_names = var.byo_service_nsg_names
   # optional inputs. only required if byo_nsg set to true
+
+  # Custom Names
+  cc_srvc_nic_nsg_name        = var.cc_srvc_nic_nsg_name
+  cc_mgmt_nic_nsg_name        = var.cc_mgmt_nic_nsg_name
 }
 
 
@@ -238,6 +257,13 @@ module "cc_lb" {
   health_check_interval = var.health_check_interval
   probe_threshold       = var.probe_threshold
   number_of_probes      = var.number_of_probes
+
+  #Custome Names
+  lb_custom_name        = var.lb_custom_name
+  lb_frontend_ip_name   = var.lb_frontend_ip_name
+  lb_backend_pool_name  = var.lb_backend_pool_name
+  lb_probe_name         = var.lb_probe_name
+  lb_rule_name          = var.lb_rule_name
 }
 
 ################################################################################

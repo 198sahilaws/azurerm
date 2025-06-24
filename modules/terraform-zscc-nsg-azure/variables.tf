@@ -61,3 +61,16 @@ variable "zssupport_server" {
   description = "destination IP address of Zscaler Support access server. IP resolution of remotesupport.<zscaler_customer_cloud>.net"
   default     = "199.168.148.101" #for commercial clouds
 }
+
+#Custom Names 
+
+variable "cc_mgmt_nic_nsg_name" {
+ description = "This is a variable of type list"
+ type        = list(string)
+}
+
+
+variable "cc_srvc_nic_nsg_name" {
+ description = "This is a variable of type list"
+ type        = list(string)
+}

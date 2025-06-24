@@ -10,7 +10,7 @@ data "azurerm_subscription" "current" {
 # Create Storage Account to store Function App
 resource "azurerm_storage_account" "cc_function_storage_account" {
   count                    = var.existing_storage_account ? 0 : 1
-  name                     = "stccvmss${var.resource_tag}"
+  name                     = var.storage_acc_name
   resource_group_name      = var.resource_group
   location                 = var.location
   account_tier             = "Standard"
@@ -86,7 +86,7 @@ resource "azurerm_application_insights" "vmss_orchestration_app_insights" {
 ################################################################################
 resource "azurerm_linux_function_app" "vmss_orchestration_app" {
   count               = var.run_manual_sync ? 0 : 1
-  name                = "${var.name_prefix}-ccvmss-${var.resource_tag}-function-app"
+  name                = var.function_app_name
   resource_group_name = var.resource_group
   location            = var.location
 
@@ -132,7 +132,7 @@ resource "azurerm_linux_function_app" "vmss_orchestration_app" {
 
 resource "azurerm_linux_function_app" "vmss_orchestration_app_with_manual_sync" {
   count               = var.run_manual_sync ? 1 : 0
-  name                = "${var.name_prefix}-ccvmss-${var.resource_tag}-function-app"
+  name                = var.function_app_name
   resource_group_name = var.resource_group
   location            = var.location
 

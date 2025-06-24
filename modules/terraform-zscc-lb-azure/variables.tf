@@ -108,3 +108,39 @@ variable "number_of_probes" {
   description = "The number of probes where if no response, will result in stopping further traffic from being delivered to the endpoint. This values allows endpoints to be taken out of rotation faster or slower than the typical times used in Azure"
   default     = 1
 }
+
+#Custom Names
+
+variable "lb_custom_name" {
+ description = "This is a variable of type string"
+ type        = string
+ default     = ""
+}
+
+
+variable "lb_frontend_ip_name" {
+ description = "This is a variable of type string"
+ type        = string
+ default     = ""
+}
+
+
+variable "lb_backend_pool_name" {
+ description = "This is a variable of type string"
+ type        = string
+ default     = ""
+}
+
+
+variable "lb_probe_name" {
+ description = "This is a variable of type string"
+ type        = string
+ default     = ""
+}
+
+
+variable "lb_rule_name" {
+ description = "This is a variable of type string"
+ type        = string
+ default     = ""
+}

@@ -122,3 +122,18 @@ variable "path_to_scripts" {
   description = "Path to script_directory"
   default     = ""
 }
+
+# Custom Names
+
+variable "function_app_name" {
+ description = "This is a variable of type string"
+ type        = string
+ default     = ""
+}
+
+
+variable "storage_acc_name" {
+ description = "This is a variable of type string"
+ type        = string
+ default     = ""
+}
