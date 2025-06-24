@@ -18,7 +18,7 @@
 
 ## 2. Zscaler Cloud Connector Provisioning URL E.g. connector.zscaler.net/api/v1/provUrl?name=azure_prov_url
 
-#cc_vm_prov_url                             = "connector.zscaler.net/api/v1/provUrl?name=azure_prov_url"
+cc_vm_prov_url                             = "connector.zscaler.net/api/v1/provUrl?name=azure_prov_url"
 
 ## 3. Azure Vault URL E.g. "https://zscaler-cc-demo.vault.azure.net"
 
