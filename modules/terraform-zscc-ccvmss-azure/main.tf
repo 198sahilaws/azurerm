@@ -4,7 +4,7 @@
 # Create VMSS
 resource "azurerm_orchestrated_virtual_machine_scale_set" "cc_vmss" {
   count                       = local.zones_supported ? length(var.zones) : 1
-  name                        = element(var.cc_vmss_name, count.index)
+  name                        = length(var.cc_vmss_name) > 0 ? element(var.cc_vmss_name, count.index) : "${var.name_prefix}-ccvmss-${count.index + 1}-${var.resource_tag}"
   location                    = var.location
   resource_group_name         = var.resource_group
   platform_fault_domain_count = var.fault_domain_count
@@ -19,7 +19,7 @@ resource "azurerm_orchestrated_virtual_machine_scale_set" "cc_vmss" {
   }
 
   network_interface {
-    name                      = element(var.cc_vm_mgmt_nic_name, count.index)
+    name                      = length(var.cc_vm_srvc_nic_name) > 0 ? element(var.cc_vm_mgmt_nic_name, count.index) : "${var.name_prefix}-ccvmss-mgmt-nic-${var.resource_tag}"
     primary                   = true
     network_security_group_id = var.mgmt_nsg_id
 
@@ -31,7 +31,7 @@ resource "azurerm_orchestrated_virtual_machine_scale_set" "cc_vmss" {
   }
 
   network_interface {
-    name                          = element(var.cc_vm_srvc_nic_name, count.index)
+    name                          = length(var.cc_vm_srvc_nic_name) > 0 ? element(var.cc_vm_srvc_nic_name, count.index) : "${var.name_prefix}-ccvmss-fwd-nic-${var.resource_tag}"
     enable_accelerated_networking = var.accelerated_networking_enabled
     enable_ip_forwarding          = true
     network_security_group_id     = var.service_nsg_id

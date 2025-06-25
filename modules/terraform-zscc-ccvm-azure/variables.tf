@@ -185,3 +185,21 @@ variable "encryption_at_host_enabled" {
   description = "User input for enabling or disabling host encryption"
   default     = true
 }
+
+#Custom Names
+
+variable "cc_vm_name" {
+ description = "This is a variable of type list"
+ type        = list(string)
+}
+
+variable "cc_vm_mgmt_nic_name" {
+ description = "This is a variable of type list"
+ type        = list(string)
+}
+
+
+variable "cc_vm_srvc_nic_name" {
+ description = "This is a variable of type list"
+ type        = list(string)
+}

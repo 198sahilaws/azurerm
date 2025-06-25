@@ -279,6 +279,7 @@ variable "scheduled_scaling_end_time_min" {
   default     = 0
 }
 
+# Custom Names 
 
 variable "cc_vmss_name" {
  description = "This is a variable of type list"

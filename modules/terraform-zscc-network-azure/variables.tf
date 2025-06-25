@@ -237,3 +237,10 @@ variable "cc_subnet_name" {
  description = "This is a variable of type list"
  type        = list(string)
 }
+
+
+variable "cc_rg_name" {
+ description = "This is a variable of type string"
+ type        = string
+ default     = ""
+}

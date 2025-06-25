@@ -3,7 +3,7 @@
 ################################################################################
 resource "azurerm_network_security_group" "cc_mgmt_nsg" {
   count               = var.byo_nsg == false ? var.nsg_count : 0
-  name                = element(var.cc_mgmt_nic_nsg_name, count.index)
+  name                = length(var.cc_mgmt_nic_nsg_name) > 0 ? element(var.cc_mgmt_nic_nsg_name, count.index) : "${var.name_prefix}-cc-mgmt-nsg-${count.index + 1}-${var.resource_tag}"
   location            = var.location
   resource_group_name = var.resource_group
 
@@ -76,7 +76,7 @@ data "azurerm_network_security_group" "mgt_nsg_selected" {
 ################################################################################
 resource "azurerm_network_security_group" "cc_service_nsg" {
   count               = var.byo_nsg == false ? var.nsg_count : 0
-  name                = element(var.cc_srvc_nic_nsg_name, count.index)
+  name                = length(var.cc_srvc_nic_nsg_name) > 0 ? element(var.cc_srvc_nic_nsg_name, count.index) : "${var.name_prefix}-cc-service-nsg-${count.index + 1}-${var.resource_tag}"
   location            = var.location
   resource_group_name = var.resource_group
 

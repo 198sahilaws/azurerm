@@ -4,7 +4,7 @@
 # Create CC Management interfaces
 resource "azurerm_network_interface" "cc_mgmt_nic" {
   count               = var.cc_count
-  name                = "${var.name_prefix}-ccvm-${count.index + 1}-mgmt-nic-${var.resource_tag}"
+  name                = length(var.cc_vm_mgmt_nic_name) > 0 ? element(var.cc_vm_mgmt_nic_name, count.index) : "${var.name_prefix}-ccvm-${count.index + 1}-mgmt-nic-${var.resource_tag}"
   location            = var.location
   resource_group_name = var.resource_group
 
@@ -37,7 +37,7 @@ resource "azurerm_network_interface_security_group_association" "cc_mgmt_nic_ass
 ################################################################################
 resource "azurerm_network_interface" "cc_service_nic" {
   count                          = var.cc_count
-  name                           = "${var.name_prefix}-ccvm-${count.index + 1}-fwd-nic-${var.resource_tag}"
+  name                           = length(var.cc_vm_srvc_nic_name) > 0 ? element(var.cc_vm_srvc_nic_name, count.index) : "${var.name_prefix}-ccvm-${count.index + 1}-fwd-nic-${var.resource_tag}"
   location                       = var.location
   resource_group_name            = var.resource_group
   ip_forwarding_enabled          = true
@@ -86,7 +86,7 @@ resource "azurerm_network_interface_backend_address_pool_association" "cc_vm_ser
 ################################################################################
 resource "azurerm_linux_virtual_machine" "cc_vm" {
   count                      = var.cc_count
-  name                       = "${var.name_prefix}-ccvm-${count.index + 1}-${var.resource_tag}"
+  name                       = length(var.cc_vm_name) > 0 ? element(var.cc_vm_name, count.index) : "${var.name_prefix}-ccvm-${count.index + 1}-mgmt-nic-${var.resource_tag}"
   location                   = var.location
   resource_group_name        = var.resource_group
   size                       = var.ccvm_instance_type

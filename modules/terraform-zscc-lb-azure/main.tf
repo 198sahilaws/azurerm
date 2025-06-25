@@ -8,7 +8,7 @@
 # Create Standard Load Balancer
 ################################################################################
 resource "azurerm_lb" "cc_lb" {
-  name                = var.lb_custom_name
+  name                = var.lb_custom_name != "" ? var.lb_custom_name : "${var.name_prefix}-cc-lb-${var.resource_tag}"
   location            = var.location
   resource_group_name = var.resource_group
   sku                 = "Standard"
@@ -23,7 +23,7 @@ resource "azurerm_lb" "cc_lb" {
 
 
   frontend_ip_configuration {
-    name                          = var.lb_frontend_ip_name
+    name                          = var.lb_frontend_ip_name != "" ? var.lb_frontend_ip_name : "${var.name_prefix}-cc-lb-ip-${var.resource_tag}"
     subnet_id                     = var.subnet_id
     private_ip_address_allocation = "dynamic"
     zones                         = local.zones_supported ? local.frontend_zone_specific : null
@@ -35,7 +35,7 @@ resource "azurerm_lb" "cc_lb" {
 # Create backend address pool for load balancer
 ################################################################################
 resource "azurerm_lb_backend_address_pool" "cc_lb_backend_pool" {
-  name            = var.lb_backend_pool_name
+  name            = var.lb_backend_pool_name != "" ? var.lb_backend_pool_name : "${var.name_prefix}-cc-lb-backend-${var.resource_tag}"
   loadbalancer_id = azurerm_lb.cc_lb.id
 }
 
@@ -44,7 +44,7 @@ resource "azurerm_lb_backend_address_pool" "cc_lb_backend_pool" {
 # Define load balancer health probe parameters
 ################################################################################
 resource "azurerm_lb_probe" "cc_lb_probe" {
-  name                = var.lb_probe_name
+  name                = var.lb_probe_name != "" ? var.lb_probe_name : "${var.name_prefix}-cc-lb-probe-${var.resource_tag}"
   loadbalancer_id     = azurerm_lb.cc_lb.id
   protocol            = "Http"
   port                = var.http_probe_port
@@ -59,7 +59,7 @@ resource "azurerm_lb_probe" "cc_lb_probe" {
 # Create load balancer rule
 ################################################################################
 resource "azurerm_lb_rule" "cc_lb_rule" {
-  name                           = var.lb_rule_name
+  name                           = var.lb_rule_name != "" ? var.lb_rule_name : "${var.name_prefix}-cc-lb-rule-${var.resource_tag}"
   loadbalancer_id                = azurerm_lb.cc_lb.id
   protocol                       = "All"
   frontend_port                  = 0

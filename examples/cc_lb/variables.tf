@@ -373,3 +373,24 @@ variable "byo_service_nsg_names" {
   description = "Existing Service Network Security Group ID for Cloud Connector VM association. This must be populated if byo_nsg variable is true"
   default     = null
 }
+
+
+# Custom Names
+
+variable "cc_vm_name" {
+ description = "This is a variable of type list"
+ type        = list(string)
+}
+
+variable "cc_vm_mgmt_nic_name" {
+ description = "This is a variable of type list"
+ type        = list(string)
+}
+
+
+variable "cc_vm_srvc_nic_name" {
+ description = "This is a variable of type list"
+ type        = list(string)
+}
+
+
