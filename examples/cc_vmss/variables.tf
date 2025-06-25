@@ -552,6 +552,11 @@ variable "cc_vnet_name" {
  default     = ""
 }
 
+variable "cc_rg_name" {
+ description = "This is a variable of type string"
+ type        = string
+ default     = ""
+}
 
 variable "cc_subnet_name" {
  description = "This is a variable of type list"
@@ -600,7 +605,21 @@ variable "function_app_name" {
  default     = ""
 }
 
-variable "storage_acc_name" {
+variable "app_service_plan_name" {
+ description = "This is a variable of type string"
+ type        = string
+ default     = ""
+}
+
+
+variable "log_analytics_workspace_name" {
+ description = "This is a variable of type string"
+ type        = string
+ default     = ""
+}
+
+
+variable "app_insight_name" {
  description = "This is a variable of type string"
  type        = string
  default     = ""

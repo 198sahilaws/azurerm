@@ -396,5 +396,7 @@ lb_rule_name = "CG-ZSCON-PRD-LOD-RULE"
 
 # Function App Custom Names
 
-storage_acc_name = "storageass"
 function_app_name = "CG-FUNC-APP"
+app_service_plan_name = "CG-SRVC-PLAN"
+log_analytics_workspace_name = "CG-LOG-ANALYTICS-WORKSPACE"
+app_insight_name = "CG-APP-INSIGHT"

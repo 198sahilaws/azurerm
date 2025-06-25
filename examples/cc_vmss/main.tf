@@ -80,6 +80,7 @@ module "network" {
   nat_gw_pip_name       = var.nat_gw_pip_name
   cc_vnet_name          = var.cc_vnet_name
   cc_subnet_name        = var.cc_subnet_name
+  cc_rg_name            = var.cc_rg_name
 }
 
 ################################################################################
@@ -187,7 +188,9 @@ module "cc_functionapp" {
 
   # Custom Names
   function_app_name = var.function_app_name
-  storage_acc_name  = var.storage_acc_name
+  app_service_plan_name = var.app_service_plan_name
+  log_analytics_workspace_name = var.log_analytics_workspace_name
+  app_insight_name = var.app_insight_name
 }
 
 ################################################################################
