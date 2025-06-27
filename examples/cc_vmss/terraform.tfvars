@@ -1,45 +1,3 @@
-env_subscription_id                        = "f60ab943-bb9d-43ee-8474-4a5cbe723234"
-cc_vm_prov_url                             = "connector.zscaler.net/api/v1/provUrl?name=Azure_VMSS"
-azure_vault_url                            = "https://sahil-zscaler-net.vault.azure.net"
-http_probe_port                            = 50000
-managed_identity_subscription_id           = "f60ab943-bb9d-43ee-8474-4a5cbe723234"
-cc_vm_managed_identity_name                = "sahil-cc-mi-1"
-cc_vm_managed_identity_rg                  = "sahil-rg-creds-tf"
-arm_location                               = "westeurope"
-ccvm_instance_type                         = "Standard_D2s_v3"
-#cc_instance_size                          = "small"
-#cc_count                                   = 2
-zones_enabled                              = true
-zones                                      = ["1", "2"]
-#workload_count                             = 1
-owner_tag                                  = "ssingla@zscaler.com"
-environment                                = "Development"
-#reuse_nsg                                  = true
-name_prefix                                = "sahil"
-encryption_at_host_enabled                 = true
-support_access_enabled                     = true
-#ccvm_source_image_id                       = "<insert path to image>"
-
-
-vmss_default_ccs = 2 	# number of CCs VMSS defaults too if no metrics are published, recommended to set to same value as vmss_min_ccs
-vmss_min_ccs = 2
-vmss_max_ccs = 4
-
-scale_in_threshold = 30
-scale_out_threshold = 70
-terminate_unhealthy_instances = false
-
-# Azure Function App Source
-upload_function_app_zip = true
-#zscaler_cc_function_public_url = "<file-url>"
-#existing_storage_account = false
-#existing_storage_account_name = "<storage-account-name"
-#existing_storage_account_rg = "<storage-account-resource-group"
-
-function_app_managed_identity_name                = "sahil-mi-vmss"
-
-function_app_managed_identity_rg                  = "sahil-rg-creds-tf"
-
 ## This is only a sample terraform.tfvars file.
 ## Uncomment and change the below variables according to your specific environment
 
@@ -375,28 +333,28 @@ function_app_managed_identity_rg                  = "sahil-rg-creds-tf"
 
 ## Custom names for Azure Objects
 
-cc_vmss_name  = ["CG-ZSCONNECT-01", "CG-ZSCONNECT-02"]
-cc_vm_mgmt_nic_name = ["CG-MGMT-ZSCON-01", "CG-MGMT-ZSCON-02"]
-cc_vm_srvc_nic_name = ["CG-ZSCON-PRD-NIC-01", "CG-ZSCON-PRD-NIC-02"]
-cc_mgmt_nic_nsg_name = ["CG-ZSCON-PRD-NSG"]
-cc_srvc_nic_nsg_name = ["CG-ZSCON-PRD-INSTANCE"]
+#cc_vmss_name  = ["", ""]
+#cc_vm_mgmt_nic_name = ["", ""]
+#cc_vm_srvc_nic_name = ["", ""]
+#cc_mgmt_nic_nsg_name = [""]
+#cc_srvc_nic_nsg_name = [""]
 
-nat_gw_name = ["CG-ZSCON-PRD-NAT-01", "CG-ZSCON-PRD-NAT-02"]
-nat_gw_pip_name = ["CG-ZSCON-PRD-PIP-01", "CG-ZSCON-PRD-PIP-02"]
-cc_vnet_name = "CG-INFRA-ZSCON-VNET"
-cc_subnet_name = ["CG-INFRA-ZSCON-SUBNET-01", "CG-INFRA-ZSCON-SUBNET-02"]
+#nat_gw_name = ["", ""]
+#nat_gw_pip_name = ["", ""]
+#cc_vnet_name = ""
+#cc_subnet_name = ["", ""]
 
 # LB Custom Names
 
-lb_custom_name = "CG-ZSCON-PRD-LOD"
-lb_frontend_ip_name = "CG-ZSCON-PRD-LOD-FT-IP"
-lb_backend_pool_name = "CG-ZSCON-PRD-LOD-POOL"
-lb_probe_name = "CG-ZSCON-PRD-LOD-PROBE"
-lb_rule_name = "CG-ZSCON-PRD-LOD-RULE"
+#lb_custom_name = ""
+#lb_frontend_ip_name = ""
+#lb_backend_pool_name = ""
+#lb_probe_name = ""
+#lb_rule_name = ""
 
 # Function App Custom Names
 
-function_app_name = "CG-FUNC-APP"
-app_service_plan_name = "CG-SRVC-PLAN"
-log_analytics_workspace_name = "CG-LOG-ANALYTICS-WORKSPACE"
-app_insight_name = "CG-APP-INSIGHT"
+#function_app_name = ""
+#app_service_plan_name = ""
+#log_analytics_workspace_name = ""
+#app_insight_name = ""
