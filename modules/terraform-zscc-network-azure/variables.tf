@@ -217,12 +217,14 @@ variable "existing_nat_gw_subnet_association" {
 variable "nat_gw_name" {
  description = "This is a variable of type list"
  type        = list(string)
+ default     = null
 }
 
 
 variable "nat_gw_pip_name" {
  description = "This is a variable of type list"
  type        = list(string)
+ default     = null
 }
 
 
@@ -236,6 +238,7 @@ variable "cc_vnet_name" {
 variable "cc_subnet_name" {
  description = "This is a variable of type list"
  type        = list(string)
+ default     = null
 }
 
 

@@ -67,10 +67,12 @@ variable "zssupport_server" {
 variable "cc_mgmt_nic_nsg_name" {
  description = "This is a variable of type list"
  type        = list(string)
+ default     = null
 }
 
 
 variable "cc_srvc_nic_nsg_name" {
  description = "This is a variable of type list"
  type        = list(string)
+ default     = null
 }

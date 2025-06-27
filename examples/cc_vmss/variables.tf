@@ -507,42 +507,49 @@ variable "byo_service_nsg_names" {
 variable "cc_vmss_name" {
  description = "This is a variable of type list"
  type        = list(string)
+ default     = null
 }
 
 
 variable "cc_vm_mgmt_nic_name" {
  description = "This is a variable of type list"
  type        = list(string)
+ default     = null
 }
 
 
 variable "cc_vm_srvc_nic_name" {
  description = "This is a variable of type list"
  type        = list(string)
+ default     = null
 }
 
 
 variable "cc_mgmt_nic_nsg_name" {
  description = "This is a variable of type list"
  type        = list(string)
+ default     = null
 }
 
 
 variable "cc_srvc_nic_nsg_name" {
  description = "This is a variable of type list"
  type        = list(string)
+ default     = null
 }
 
 
 variable "nat_gw_name" {
  description = "This is a variable of type list"
  type        = list(string)
+ default     = null
 }
 
 
 variable "nat_gw_pip_name" {
  description = "This is a variable of type list"
  type        = list(string)
+ default     = null
 }
 
 
@@ -561,6 +568,7 @@ variable "cc_rg_name" {
 variable "cc_subnet_name" {
  description = "This is a variable of type list"
  type        = list(string)
+ default     = null
 }
 
 

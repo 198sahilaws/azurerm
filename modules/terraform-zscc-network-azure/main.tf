@@ -48,7 +48,7 @@ data "azurerm_virtual_network" "vnet_selected" {
 # Create Public IP for NAT Gateway or reference existing
 resource "azurerm_public_ip" "pip" {
   count                   = var.byo_pips == false && var.base_only == false ? length(distinct(var.zones)) : 0
-  name                    = length(var.nat_gw_pip_name) > 0 ? element(var.nat_gw_pip_name, count.index) : "${var.name_prefix}-public-ip-${count.index + 1}-${var.resource_tag}"
+  name                    = var.nat_gw_pip_name != null ? element(var.nat_gw_pip_name, count.index) : "${var.name_prefix}-public-ip-${count.index + 1}-${var.resource_tag}"
   location                = var.location
   resource_group_name     = try(data.azurerm_resource_group.rg_selected[0].name, azurerm_resource_group.rg[0].name)
   allocation_method       = "Static"
@@ -73,7 +73,7 @@ data "azurerm_public_ip" "pip_selected" {
 # Create NAT Gateway or reference an existing
 resource "azurerm_nat_gateway" "ngw" {
   count                   = var.byo_nat_gws == false && var.base_only == false ? length(distinct(var.zones)) : 0
-  name                    = length(var.nat_gw_name) > 0 ? element(var.nat_gw_name, count.index) : "${var.name_prefix}-ngw-${count.index + 1}-${var.resource_tag}"
+  name                    = var.nat_gw_name != null ? element(var.nat_gw_name, count.index) : "${var.name_prefix}-ngw-${count.index + 1}-${var.resource_tag}"
   location                = var.location
   resource_group_name     = try(data.azurerm_resource_group.rg_selected[0].name, azurerm_resource_group.rg[0].name)
   idle_timeout_in_minutes = 10
@@ -106,7 +106,7 @@ resource "azurerm_nat_gateway_public_ip_association" "ngw_association" {
 # Create Cloud Connector Subnet
 resource "azurerm_subnet" "cc_subnet" {
   count                = var.byo_subnets == false && var.base_only == false ? length(distinct(var.zones)) : 0
-  name                 = length(var.cc_subnet_name) > 0 ? element(var.cc_subnet_name, count.index) : "${var.name_prefix}-cc-subnet-${count.index + 1}-${var.resource_tag}"
+  name                 = var.cc_subnet_name != null ? element(var.cc_subnet_name, count.index) : "${var.name_prefix}-cc-subnet-${count.index + 1}-${var.resource_tag}"
   resource_group_name  = var.byo_vnet == false ? try(data.azurerm_virtual_network.vnet_selected[0].resource_group_name, azurerm_virtual_network.vnet[0].resource_group_name) : var.byo_vnet_subnets_rg_name
   virtual_network_name = var.byo_vnet == false ? try(data.azurerm_virtual_network.vnet_selected[0].name, azurerm_virtual_network.vnet[0].name) : var.byo_vnet_name
   address_prefixes     = var.cc_subnets != null ? [element(var.cc_subnets, count.index)] : [cidrsubnet(var.network_address_space, 8, count.index + 200)]

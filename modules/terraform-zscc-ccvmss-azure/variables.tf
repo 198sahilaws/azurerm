@@ -284,15 +284,18 @@ variable "scheduled_scaling_end_time_min" {
 variable "cc_vmss_name" {
  description = "This is a variable of type list"
  type        = list(string)
+ default     = null
 }
 
 variable "cc_vm_mgmt_nic_name" {
  description = "This is a variable of type list"
  type        = list(string)
+ default     = null
 }
 
 
 variable "cc_vm_srvc_nic_name" {
  description = "This is a variable of type list"
  type        = list(string)
+ default     = null
 }
