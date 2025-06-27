@@ -342,6 +342,7 @@
 #nat_gw_name = ["", ""]
 #nat_gw_pip_name = ["", ""]
 #cc_vnet_name = ""
+#cc_rg_name = ""
 #cc_subnet_name = ["", ""]
 
 # LB Custom Names
